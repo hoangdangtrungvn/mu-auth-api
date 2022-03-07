@@ -14,6 +14,9 @@ lerna-debug.log*
 # ENV
 .env
 
+# TypeORM
+ormconfig.json
+
 # OS
 .DS_Store
 
