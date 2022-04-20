@@ -21,13 +21,12 @@ export class UsersService {
 
   async create(createUserDto: CreateUserDto): Promise<User> {
     try {
-      const user = await this.findOne(createUserDto.username)
-      if (user)
-        throw new HttpException('Username already exists', HttpStatus.CONFLICT)
-
-      const data = this.usersRepository.create(createUserDto)
-      return await this.usersRepository.save(data)
+      const user = this.usersRepository.create(createUserDto)
+      return await this.usersRepository.save(user)
     } catch (error) {
+      if (error.code === 'ER_DUP_ENTRY') {
+        throw new HttpException('Username already exists', HttpStatus.CONFLICT)
+      }
       throw new HttpException(error.message, HttpStatus.INTERNAL_SERVER_ERROR)
     }
   }
