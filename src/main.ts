@@ -17,6 +17,7 @@ async function bootstrap() {
       transform: true,
       stopAtFirstError: false,
       exceptionFactory: ExceptionFactory,
+      whitelist: true,
     }),
   )
   app.useGlobalFilters(new HttpExceptionFilter())
