@@ -16,11 +16,6 @@ import { TypeOrmModule } from '@nestjs/typeorm'
       logging: true,
       migrationsRun: true,
       logger: 'file',
-      cli: {
-        entitiesDir: 'src/entities',
-        migrationsDir: 'src/migrations',
-        subscribersDir: 'src/subscribers',
-      },
     }),
   ],
 })
